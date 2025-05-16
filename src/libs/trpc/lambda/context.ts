@@ -2,6 +2,7 @@ import { parse } from 'cookie';
 import debug from 'debug';
 import { User } from 'next-auth';
 import { NextRequest } from 'next/server';
+import { ipAddress } from '@vercel/functions'
 
 import { JWTPayload, LOBE_CHAT_AUTH_HEADER, enableClerk, enableNextAuth } from '@/const/auth';
 import { oidcEnv } from '@/envs/oidc';
@@ -31,6 +32,8 @@ export interface AuthContext {
   resHeaders?: Headers;
   userAgent?: string;
   userId?: string | null;
+  // Add traces
+  ip?: string | null;
 }
 
 /**
@@ -45,6 +48,7 @@ export const createContextInner = async (params?: {
   oidcAuth?: OIDCAuth | null;
   userAgent?: string;
   userId?: string | null;
+  ip?: string | null;
 }): Promise<AuthContext> => {
   log('createContextInner called with params: %O', params);
   const responseHeaders = new Headers();
@@ -58,6 +62,7 @@ export const createContextInner = async (params?: {
     resHeaders: responseHeaders,
     userAgent: params?.userAgent,
     userId: params?.userId,
+    ip: params?.ip,
   };
 };
 
@@ -97,6 +102,7 @@ export const createLambdaContext = async (request: NextRequest): Promise<LambdaC
   let userId;
   let auth;
   let oidcAuth = null;
+  const ip = ipAddress(request);
 
   // Prioritize checking the standard Authorization header for OIDC Bearer Token validation
   if (oidcEnv.ENABLE_OIDC) {
@@ -132,6 +138,7 @@ export const createLambdaContext = async (request: NextRequest): Promise<LambdaC
           oidcAuth,
           ...commonContext,
           userId,
+          ip,
         });
       }
     } catch (error) {
