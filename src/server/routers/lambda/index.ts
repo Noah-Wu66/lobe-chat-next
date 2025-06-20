@@ -52,7 +52,6 @@ export const lambdaRouter = router({
   thread: threadRouter,
   topic: topicRouter,
   user: userRouter,
-  usage: usageRouter,
 });
 
 export type LambdaRouter = typeof lambdaRouter;
