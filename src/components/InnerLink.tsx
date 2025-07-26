@@ -12,7 +12,18 @@ interface InnerLinkProps
 const InnerLink = ({ href, ...props }: InnerLinkProps) => {
   const variants = useServerConfigStore((s) => s.segmentVariants);
 
-  return <Link {...props} as={href} href={`/${variants}${href}`} />;
+  // Fallback for non-string hrefs or cases where we can't process the href
+  if (typeof href !== 'string') {
+    return <Link {...props} href={href} />;
+  }
+
+  const [pathname] = href.split('?');
+
+  const finalHref = {
+    pathname: variants ? `/${variants}${pathname}` : pathname,
+  };
+
+  return <Link {...props} as={href} href={finalHref} />;
 };
 
 export default InnerLink;
