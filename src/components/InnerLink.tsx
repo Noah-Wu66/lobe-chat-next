@@ -1,5 +1,6 @@
 import Link, { LinkProps } from 'next/link';
 import { AnchorHTMLAttributes, ReactNode } from 'react';
+import urlJoin from 'url-join';
 
 import { useServerConfigStore } from '@/store/serverConfig';
 
@@ -20,7 +21,7 @@ const InnerLink = ({ href, ...props }: InnerLinkProps) => {
   const [pathname] = href.split('?');
 
   const finalHref = {
-    pathname: variants ? `/${variants}${pathname}` : pathname,
+    pathname: variants ? urlJoin('/', variants, pathname) : pathname,
   };
 
   return <Link {...props} as={href} href={finalHref} />;
