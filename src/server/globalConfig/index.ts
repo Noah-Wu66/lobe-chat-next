@@ -18,28 +18,12 @@ export const getServerGlobalConfig = async () => {
 
   const config: GlobalServerConfig = {
     aiProvider: genServerAiProvidersConfig({
-      azure: {
-        enabledKey: 'ENABLED_AZURE_OPENAI',
-        withDeploymentName: true,
-      },
-      bedrock: {
-        enabledKey: 'ENABLED_AWS_BEDROCK',
-        modelListKey: 'AWS_BEDROCK_MODEL_LIST',
-      },
-      giteeai: {
-        enabledKey: 'ENABLED_GITEE_AI',
-        modelListKey: 'GITEE_AI_MODEL_LIST',
-      },
       lmstudio: {
         fetchOnClient: isDesktop ? false : undefined,
       },
       /* ↓ cloud slot ↓ */
 
       /* ↑ cloud slot ↑ */
-      ollama: {
-        enabled: isDesktop ? true : undefined,
-        fetchOnClient: isDesktop ? false : !process.env.OLLAMA_PROXY_URL,
-      },
       qwen: {
         withDeploymentName: true,
       },
@@ -61,23 +45,7 @@ export const getServerGlobalConfig = async () => {
     /**
      * @deprecated
      */
-    languageModel: genServerLLMConfig({
-      azure: {
-        enabledKey: 'ENABLED_AZURE_OPENAI',
-        withDeploymentName: true,
-      },
-      bedrock: {
-        enabledKey: 'ENABLED_AWS_BEDROCK',
-        modelListKey: 'AWS_BEDROCK_MODEL_LIST',
-      },
-      giteeai: {
-        enabledKey: 'ENABLED_GITEE_AI',
-        modelListKey: 'GITEE_AI_MODEL_LIST',
-      },
-      ollama: {
-        fetchOnClient: !process.env.OLLAMA_PROXY_URL,
-      },
-    }),
+    languageModel: genServerLLMConfig({}),
     oAuthSSOProviders: authEnv.NEXT_AUTH_SSO_PROVIDERS.trim().split(/[,，]/),
     systemAgent: parseSystemAgent(appEnv.SYSTEM_AGENT),
     telemetry: {
