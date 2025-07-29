@@ -16,10 +16,9 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
-    "types": ["vitest/globals", "@serwist/next/typings"],
+    "types": ["@serwist/next/typings"],
     "paths": {
-      "@/*": ["./src/*"],
-      "~test-utils": ["./tests/utils.tsx"]
+      "@/*": ["./src/*"]
     },
     "plugins": [
       {
@@ -34,8 +33,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "next-env.d.ts",
-    "src",
-    "tests",
-    "vitest.config.ts"
+    "src"
   ]
 }

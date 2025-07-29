@@ -20,9 +20,7 @@
   "author": "LobeHub <i@lobehub.com>",
   "sideEffects": false,
   "main": "./src/index.ts",
-  "scripts": {
-    "test": "vitest"
-  },
+
   "dependencies": {
     "@langchain/community": "^0.3.41",
     "@langchain/core": "^0.3.45",
@@ -35,12 +33,5 @@
     "xlsx": "^0.18.5",
     "yauzl": "^3.2.0"
   },
-  "devDependencies": {
-    "@types/concat-stream": "^2.0.3",
-    "@types/yauzl": "^2.10.3",
-    "typescript": "^5"
-  },
-  "peerDependencies": {
-    "typescript": ">=5"
-  }
+
 }
