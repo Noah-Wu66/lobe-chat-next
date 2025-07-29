@@ -1,6 +1,7 @@
 import { CreateFileParams, ElectronIpcClient, FileMetadata } from '@lobechat/electron-server-ipc';
 
-import packageJSON from '@/../apps/desktop/package.json';
+// 使用主项目的 package.json 或者一个默认的应用名称
+const packageJSON = { name: '@lobehub/chat' };
 
 class LobeHubElectronIpcClient extends ElectronIpcClient {
   // 获取数据库路径
