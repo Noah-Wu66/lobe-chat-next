@@ -1,8 +1,15 @@
-import analyzer from '@next/bundle-analyzer';
 import { withSentryConfig } from '@sentry/nextjs';
 import withSerwistInit from '@serwist/next';
 import type { NextConfig } from 'next';
 import ReactComponentName from 'react-scan/react-component-name/webpack';
+
+// 动态导入 bundle analyzer，如果不存在则使用 noWrapper
+let analyzer: any;
+try {
+  analyzer = require('@next/bundle-analyzer');
+} catch (error) {
+  analyzer = () => (config: NextConfig) => config;
+}
 
 const isProd = process.env.NODE_ENV === 'production';
 const buildWithDocker = process.env.DOCKER === 'true';
