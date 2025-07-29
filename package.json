@@ -30,6 +30,7 @@
   ],
   "scripts": {
     "build": "cross-env NODE_OPTIONS=--max-old-space-size=6144 next build",
+    "build:docker": "cross-env DOCKER=true NODE_OPTIONS=--max-old-space-size=6144 next build",
     "start": "next start -p 3210"
   },
 
