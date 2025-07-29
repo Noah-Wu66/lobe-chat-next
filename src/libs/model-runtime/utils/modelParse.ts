@@ -23,49 +23,11 @@ export const MODEL_LIST_CONFIGS = {
     reasoningKeywords: ['thinking', '-2.5-'],
     visionKeywords: ['gemini', 'learnlm'],
   },
-  llama: {
-    functionCallKeywords: ['llama-3.2', 'llama-3.3', 'llama-4'],
-    reasoningKeywords: [],
-    visionKeywords: [],
-  },
   openai: {
     excludeKeywords: ['audio'],
     functionCallKeywords: ['4o', '4.1', 'o3', 'o4'],
     reasoningKeywords: ['o1', 'o3', 'o4'],
     visionKeywords: ['4o', '4.1', 'o4'],
-  },
-  qwen: {
-    functionCallKeywords: [
-      'qwen-max',
-      'qwen-plus',
-      'qwen-turbo',
-      'qwen-long',
-      'qwen1.5',
-      'qwen2',
-      'qwen2.5',
-      'qwen3',
-    ],
-    reasoningKeywords: ['qvq', 'qwq', 'qwen3'],
-    visionKeywords: ['qvq', 'vl'],
-  },
-  v0: {
-    functionCallKeywords: ['v0'],
-    reasoningKeywords: ['v0-1.5'],
-    visionKeywords: ['v0'],
-  },
-  volcengine: {
-    functionCallKeywords: ['doubao-1.5'],
-    reasoningKeywords: ['thinking', '-r1'],
-    visionKeywords: ['vision', '-m'],
-  },
-  zeroone: {
-    functionCallKeywords: ['fc'],
-    visionKeywords: ['vision'],
-  },
-  zhipu: {
-    functionCallKeywords: ['glm-4', 'glm-z1'],
-    reasoningKeywords: ['glm-zero', 'glm-z1'],
-    visionKeywords: ['glm-4v'],
   },
 } as const;
 
@@ -74,13 +36,7 @@ export const PROVIDER_DETECTION_CONFIG = {
   anthropic: ['claude'],
   deepseek: ['deepseek'],
   google: ['gemini'],
-  llama: ['llama'],
   openai: ['o1', 'o3', 'o4', 'gpt-'],
-  qwen: ['qwen', 'qwq', 'qvq'],
-  v0: ['v0'],
-  volcengine: ['doubao'],
-  zeroone: ['yi-'],
-  zhipu: ['glm'],
 } as const;
 
 /**

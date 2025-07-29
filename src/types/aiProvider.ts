@@ -16,15 +16,8 @@ export type AiProviderSourceType = (typeof AiProviderSourceEnum)[keyof typeof Ai
 export const AiProviderSDKEnum = {
   Anthropic: 'anthropic',
   Azure: 'azure',
-  AzureAI: 'azureai',
-  Bedrock: 'bedrock',
-  Cloudflare: 'cloudflare',
   Google: 'google',
-  Huggingface: 'huggingface',
-  Ollama: 'ollama',
   Openai: 'openai',
-  Qwen: 'qwen',
-  Volcengine: 'volcengine',
 } as const;
 
 export type AiProviderSDKType = (typeof AiProviderSDKEnum)[keyof typeof AiProviderSDKEnum];

@@ -18,22 +18,9 @@ export const getServerGlobalConfig = async () => {
 
   const config: GlobalServerConfig = {
     aiProvider: genServerAiProvidersConfig({
-      lmstudio: {
-        fetchOnClient: isDesktop ? false : undefined,
-      },
       /* ↓ cloud slot ↓ */
 
       /* ↑ cloud slot ↑ */
-      qwen: {
-        withDeploymentName: true,
-      },
-      tencentcloud: {
-        enabledKey: 'ENABLED_TENCENT_CLOUD',
-        modelListKey: 'TENCENT_CLOUD_MODEL_LIST',
-      },
-      volcengine: {
-        withDeploymentName: true,
-      },
     }),
     defaultAgent: {
       config: parseAgentConfig(DEFAULT_AGENT_CONFIG),
